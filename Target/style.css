@@ -1,0 +1,59 @@
+body{
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  animation-name: show;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes show {
+  0% {
+    --shown: 1;
+  }
+  50% {
+    --shown: 13;
+  }
+  100% {
+    --shown: 1;
+  }
+}
+
+@property --shown {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: true;
+}
+
+div{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  counter-increment: number;
+}
+
+div:nth-of-type(odd)::before{
+  background: red;
+  scale: var(--value, 1);
+  z-index: calc(0 - var(--value, 1));
+  opacity: clamp(0, calc(var(--shown, 1) + 1 - var(--value, 1)), 1);
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+div:nth-of-type(even)::before{
+  background: white;
+  scale: var(--value, 1);
+  z-index: calc(0 - var(--value, 1));
+  opacity: clamp(0, calc(var(--shown, 1) + 0.5 - var(--value, 1)), 1);
+  content: "";
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
