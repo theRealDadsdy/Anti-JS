@@ -13,7 +13,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: unzipper
         run: |
-          rm -r extracted
           filename=$(basename -s .zip *.zip)
           unzip *.zip
           rm *.zip
