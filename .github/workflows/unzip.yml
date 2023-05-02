@@ -14,6 +14,7 @@ jobs:
       - name: unzipper
         run: |
           unzip *.zip
+          rm .zip
           git config --local user.email "github-actions@users.noreply.github.com"
           git config --local user.name "github-actions"
           git add .
