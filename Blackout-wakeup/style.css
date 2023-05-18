@@ -1,0 +1,16 @@
+@keyframes shift{
+  0%{--shade: 1.5;}
+  40%{--shade: 0;}
+  47%{--shade: 0;}
+  50%{--shade: 1.5;}
+  100%{--shade: 1.5;}
+}
+@property --shade{
+  syntax: "<number>";
+  initial-value: 1.5;
+  inherits: true;
+}
+body{
+  background-image: radial-gradient(ellipse 200% 100%, hsl(0, 0%, calc(100% * var(--shade))), hsl(0, 0%, calc(50% * var(--shade))));
+  animation: shift 30s linear infinite 2s;
+}
